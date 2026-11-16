@@ -17,8 +17,8 @@
   --r:26px; --shadow:0 30px 70px -30px rgba(3,28,33,.55);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--sans);color:var(--ink);background:var(--sand);overflow-x:hidden;line-height:1.6}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:var(--sans);color:var(--ink);background:var(--sand);overflow-x:hidden;overflow-x:clip;line-height:1.6}
 body.lock{overflow:hidden}
 img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -86,6 +86,9 @@ input,select,textarea{font:inherit;color:inherit}
 .intro-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:#fff}
 .intro video,.intro .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .intro .still{opacity:0;transition:opacity .25s linear}
+.seqc{position:absolute;inset:0;width:100%;height:100%;display:none;background:#000 url('media/seq/f001.jpg') 62% center/cover}
+.useSeq video{display:none}
+.useSeq .seqc{display:block}
 .intro .still.fb{opacity:1}
 .intro .shade{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 30%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 100%),linear-gradient(180deg,rgba(3,20,25,.45),rgba(3,20,25,0) 35%,rgba(3,20,25,.35))}
 .layerA,.layerB{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6%}
@@ -95,7 +98,7 @@ input,select,textarea{font:inherit;color:inherit}
 @keyframes up{to{opacity:1;transform:none}}
 .layerA p{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.7rem);opacity:0;animation:fade 1.2s 1.2s forwards}
 @keyframes fade{to{opacity:1}}
-.descend{position:absolute;bottom:42px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;font-size:.72rem;letter-spacing:.35em;font-weight:800;opacity:0;animation:fade 1s 1.8s forwards}
+.descend{position:absolute;bottom:42px;left:50%;transform:translateX(-50%);white-space:nowrap;display:flex;flex-direction:column;align-items:center;gap:12px;font-size:.72rem;letter-spacing:.35em;font-weight:800;opacity:0;animation:fade 1s 1.8s forwards}
 .descend i{width:1.5px;height:56px;background:linear-gradient(#fff,transparent);position:relative;overflow:hidden}
 .descend i::after{content:"";position:absolute;left:0;right:0;top:-30px;height:30px;background:var(--mango);animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{to{top:60px}}
@@ -199,6 +202,8 @@ input,select,textarea{font:inherit;color:inherit}
 .spot:hover .tip,.spot.open .tip{opacity:1;transform:translate(-50%,0)}
 .spot.right .tip{left:auto;right:-10px;transform:translate(0,10px)}
 .spot.right:hover .tip,.spot.right.open .tip{transform:none}
+.spot.left .tip{left:-10px;transform:translate(0,10px)}
+.spot.left:hover .tip,.spot.left.open .tip{transform:none}
 .acts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:90px;border-top:1px solid rgba(13,27,30,.14)}
 .act{padding:34px 30px 34px 0;border-bottom:1px solid rgba(13,27,30,.14);position:relative;transition:padding .4s}
 .act:not(:nth-child(3n)){border-right:1px solid rgba(13,27,30,.14)}
@@ -252,11 +257,12 @@ input,select,textarea{font:inherit;color:inherit}
 /* reservas */
 .book{padding:140px 0;background:var(--sand)}
 .book-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;margin-top:50px;align-items:start}
+.book-grid>*,.int-grid>*,.where-grid>*,.c-grid>*,.when>*{min-width:0}
 .card{background:#fff;border-radius:var(--r);padding:30px;box-shadow:0 20px 50px -30px rgba(3,28,33,.35)}
 .card + .card{margin-top:22px}
 .card h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:16px;display:flex;gap:12px;align-items:baseline}
 .card h3 i{font-style:italic;color:var(--coral);font-size:1rem}
-.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .pick button{border-radius:18px;overflow:hidden;text-align:left;border:2px solid transparent;background:#f7f3ec;transition:.3s}
 .pick button img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s}
 .pick button:hover img{transform:scale(1.06)}
@@ -288,9 +294,9 @@ input,select,textarea{font:inherit;color:inherit}
 .calh button{width:40px;height:40px;border-radius:50%;background:#f4eee4;font-size:1.2rem;font-weight:700}
 .calh button:hover{background:var(--coral);color:#fff}
 .calh button:disabled{opacity:.3;pointer-events:none}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
 .cal .wd{text-align:center;font-size:.72rem;font-weight:800;color:var(--muted);padding:4px 0}
-.day{aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:.92rem;background:#f8f4ee;transition:background .15s,transform .15s}
+.day{aspect-ratio:1;padding:0;min-width:0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:.92rem;background:#f8f4ee;transition:background .15s,transform .15s}
 .day:not(.off):not(.occ):hover{transform:scale(1.07);background:#ffe9df}
 .day i{width:5px;height:5px;border-radius:50%;margin-top:2px}
 .s-alta i{background:var(--coral)}.s-media i{background:var(--turq)}.s-baja i{background:#7b88d8}
@@ -420,9 +426,20 @@ footer a:hover{opacity:1;color:var(--mango)}
   .mcols{grid-template-columns:1fr}
 }
 @media (max-width:900px){
+  .intro{height:240vh}
+  .layerB{padding-bottom:10vh}
+  .layerB h2{font-size:clamp(2.3rem,10vw,3.4rem)}
+  .layerA h1{font-size:clamp(3.6rem,20vw,6rem)}
+  .descend{bottom:28px}
+  .concept{padding:100px 0 80px}
+  .interior,.offers,.island,.gallery-s,.reviews,.book,.where,.contact{padding:90px 0}
+  .stats{margin-top:60px}
+  .mapbox{min-height:400px}
+  .card{padding:22px 18px}
   .burger{display:block}
-  .links{position:fixed;top:0;right:0;height:100vh;width:min(330px,84vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:24px;padding:40px;background:var(--deeper);color:#fff;transform:translateX(105%);transition:transform .5s cubic-bezier(.2,.8,.2,1);font-size:1.3rem}
-  .nav.open .links{transform:none}
+  .links{position:fixed;inset:0;height:100vh;height:100dvh;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:40px;background:rgba(3,28,33,.97);color:#fff;opacity:0;visibility:hidden;transform:scale(1.04);transition:opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1),visibility .4s;font-family:var(--serif);font-size:1.9rem}
+  .links .btn{font-family:var(--sans);font-size:1rem;margin-top:10px}
+  .nav.open .links{opacity:1;visibility:visible;transform:none}
   .burger{z-index:2}
   .nav.open{color:#fff}
   /* cabañas: lista vertical en móvil */
@@ -476,7 +493,8 @@ footer a:hover{opacity:1;color:var(--mango)}
 <!-- ========== INTRO: descenso en dron ========== -->
 <section class="intro" id="inicio">
   <div class="intro-stick">
-    <video id="drone" muted playsinline preload="auto" poster="media/descenso-inicio.jpg" src="media/descenso.mp4"></video>
+    <video id="drone" muted playsinline preload="auto" poster="media/descenso-inicio.jpg"></video>
+    <canvas id="seq" class="seqc"></canvas>
     <img class="still" id="still" src="media/portada.jpg" alt="Cabañas de Baan Nam al atardecer">
     <div class="shade"></div>
     <div class="layerA" id="layerA">
@@ -758,11 +776,22 @@ const PLACES=[
 ];
 
 /* ===================== LOADER ===================== */
-const drone=$('#drone');
+const drone=$('#drone');let vidOK=true,vt=0,vtTarget=0;
 let loadP=0;const lbar=$('#lbar');
 const loadTick=setInterval(()=>{loadP=Math.min(loadP+Math.random()*12,90);lbar.style.width=loadP+'%';},180);
 function hideLoader(){clearInterval(loadTick);lbar.style.width='100%';setTimeout(()=>{$('#loader').classList.add('hide');document.body.classList.remove('lock');},350);}
-if(drone.readyState>=2)setTimeout(hideLoader,600);else drone.addEventListener('loadeddata',hideLoader,{once:true});
+/* En móvil/tablet se usa una secuencia de imágenes en canvas (los móviles no permiten mover un vídeo fotograma a fotograma con fluidez). En escritorio, el vídeo. */
+const USE_SEQ=matchMedia('(hover:none),(pointer:coarse),(max-width:900px)').matches;
+const SEQ_N=81,seqImgs=[],seqC=$('#seq'),seqX=seqC.getContext('2d');let seqI=0,seqT=0,seqDrawn=-1;
+function startSeq(){document.querySelector('.intro').classList.add('useSeq');drone.removeAttribute('src');
+  const load=i=>new Promise(r=>{const im=new Image();im.onload=()=>{seqImgs[i]=im;r();};im.onerror=r;im.src=`media/seq/f${String(i+1).padStart(3,'0')}.jpg`;});
+  load(0).then(()=>{sizeSeq();drawSeq(0);hideLoader();(async()=>{for(let i=1;i<SEQ_N;i++)await load(i);})();});}
+function sizeSeq(){const d=Math.min(devicePixelRatio||1,2);seqC.width=seqC.clientWidth*d;seqC.height=seqC.clientHeight*d;seqDrawn=-1;}
+function drawSeq(i){let k=i;while(k>0&&!seqImgs[k])k--;const im=seqImgs[k];if(!im||k===seqDrawn)return;seqDrawn=k;
+  const W=seqC.width,H=seqC.height,sc=Math.max(W/im.width,H/im.height),w=im.width*sc,h=im.height*sc;
+  seqX.drawImage(im,(W-w)*.62,(H-h)/2,w,h);}
+if(USE_SEQ){startSeq();}
+else{drone.addEventListener('loadeddata',hideLoader,{once:true});drone.addEventListener('error',()=>{vidOK=false;startSeq();},{once:true});drone.src='media/descenso.mp4';}
 setTimeout(hideLoader,4500);
 
 /* ===================== CURSOR ===================== */
@@ -780,10 +809,7 @@ setTimeout(hideLoader,4500);
 $('#descend').addEventListener('animationend',e=>{e.currentTarget.style.animation='none';});
 const intro=$('#inicio'),still=$('#still'),layerA=$('#layerA'),layerB=$('#layerB');
 (function(){const h=$('#heroTitle');h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="w"><span style="transition-delay:${(i*.07).toFixed(2)}s">${w}</span></span>`).join(' ');})();
-let vidOK=true,vt=0,vtTarget=0;
-drone.addEventListener('error',()=>{vidOK=false;still.src='media/aerea.jpg';still.classList.add('fb');});
-// iOS: "despertar" el vídeo con el primer toque para que permita buscar fotogramas
-addEventListener('touchstart',()=>{drone.play().then(()=>drone.pause()).catch(()=>{});},{once:true,passive:true});
+
 function introProgress(){const r=intro.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight));}
 function updIntro(){
   const p=introProgress();
@@ -791,15 +817,11 @@ function updIntro(){
   $('#descend').style.opacity=1-clamp(p/.08);
   const alt=Math.round(180*(1-clamp(p/.85)));$('#altv').textContent=alt;$('#altdot').style.top=(clamp(p/.85)*210)+'px';
   $('#iprog').style.width=(p*100)+'%';
-  if(vidOK){vtTarget=clamp(p/.82)*(drone.duration||5);
-    still.style.opacity=clamp((p-.8)/.1);
-  }else{ // sin vídeo: zoom de la foto aérea y fundido con la portada
-    still.style.transform=`scale(${1.5-clamp(p/.85)*.5})`;still.style.opacity=1;
-    still.src=p>.75?'media/portada.jpg':'media/aerea.jpg';
-  }
+  if(USE_SEQ||!vidOK)seqT=clamp(p/.82)*(SEQ_N-1);else vtTarget=clamp(p/.82)*(drone.duration||5);
+  still.style.opacity=clamp((p-.8)/.1);
   layerB.classList.toggle('show',p>.8);
 }
-(function loop(){ if(vidOK&&drone.readyState>=1){vt+=(vtTarget-vt)*.12;if(Math.abs(drone.currentTime-vt)>.015){try{drone.currentTime=vt;}catch(e){}}}requestAnimationFrame(loop);})();
+(function loop(){ if(USE_SEQ||!vidOK){seqI+=(seqT-seqI)*.18;drawSeq(Math.round(seqI));} else if(drone.readyState>=1){vt+=(vtTarget-vt)*.12;if(Math.abs(drone.currentTime-vt)>.015){try{drone.currentTime=vt;}catch(e){}}}requestAnimationFrame(loop);})();
 
 /* ===================== MARQUEE ===================== */
 (function(){const items=['Koh Tao','Golfo de Tailandia','Cuatro cabañas sobre el agua','Arrecife a 50 metros','Tortugas verdes','Atardeceres de fuego','Selva y granito'];
@@ -826,7 +848,7 @@ $('#offGrid').innerHTML=OFFERS.slice(1).map((o,i)=>`<div class="off reveal" styl
 
 /* ===================== ISLA ===================== */
 const SPOTS=[[66,45,'Las cabañas','Cuatro casas sobre pilotes al final del muelle.'],[22,66,'Muelle iluminado','Farolillos encendidos cada noche desde la playa.'],[55,80,'Arrecife de coral','Snorkel a 50 m de tu escalera, con tortugas y peces payaso.'],[22,16,'Selva y granito','Senderos hacia los miradores de la isla.'],[13,84,'Playa privada','Arena blanca y palmeras justo a la entrada del muelle.'],[93,12,'Atardecer','Cada día el sol se pone frente a las terrazas.',1]];
-$('#hot').insertAdjacentHTML('beforeend',SPOTS.map(s=>`<div class="spot${s[4]||s[0]>80?' right':''}" style="left:${s[0]}%;top:${s[1]}%"><button aria-label="${s[2]}"></button><div class="tip"><b>${s[2]}</b>${s[3]}</div></div>`).join(''));
+$('#hot').insertAdjacentHTML('beforeend',SPOTS.map(s=>`<div class="spot${s[4]||s[0]>70?' right':s[0]<30?' left':''}" style="left:${s[0]}%;top:${s[1]}%"><button aria-label="${s[2]}"></button><div class="tip"><b>${s[2]}</b>${s[3]}</div></div>`).join(''));
 $$('.spot').forEach(s=>s.addEventListener('click',e=>{e.stopPropagation();const o=s.classList.contains('open');$$('.spot').forEach(x=>x.classList.remove('open'));if(!o)s.classList.add('open');}));
 document.addEventListener('click',()=>$$('.spot.open').forEach(x=>x.classList.remove('open')));
 $('#acts').innerHTML=ACTS.map((a,i)=>`<div class="act reveal" style="--d:${(i%3)*.08}s"><span class="n">${String(i+1).padStart(2,'0')}</span><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join('');
@@ -996,7 +1018,7 @@ function onScroll(){const y=scrollY;
  const ro=offBg.parentElement.getBoundingClientRect();if(ro.bottom>0&&ro.top<innerHeight)offBg.style.transform=`translateY(${(ro.top/innerHeight)*-12}%)`;
 }
 addEventListener('scroll',onScroll,{passive:true});
-addEventListener('resize',()=>{sizeCabins();onScroll();});
+addEventListener('resize',()=>{sizeCabins();if(USE_SEQ||!vidOK){sizeSeq();drawSeq(Math.round(seqI));}onScroll();});
 addEventListener('load',()=>{sizeCabins();onScroll();});
 sizeCabins();onScroll();
 </script>
