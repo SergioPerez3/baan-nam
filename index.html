@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baan Nam · Cabañas sobre el agua en Koh Tao</title>
+<meta name="description" content="Baan Nam: cuatro cabañas de teca y hoja de palma sobre el arrecife de Koh Tao, Tailandia. Web ficticia de portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d1b1e; --muted:#5d6f72; --sand:#f7f1e8; --sand2:#efe5d5; --deep:#062c33; --deeper:#031c21;
+  --teal:#0b4f55; --turq:#19d3c5; --coral:#ff6a3d; --pink:#ff3d7f; --mango:#ffb23f;
+  --sunset:linear-gradient(90deg,#ff3d7f,#ff6a3d 50%,#ffb23f);
+  --serif:'Playfair Display',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  --r:26px; --shadow:0 30px 70px -30px rgba(3,28,33,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--sand);overflow-x:hidden;line-height:1.6}
+body.lock{overflow:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+.wrap{width:min(1240px,92%);margin:0 auto}
+.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.32em;text-transform:uppercase;color:var(--coral)}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,5.6vw,4.6rem);line-height:1.02;letter-spacing:-.01em;margin:.25em 0 .35em}
+.h2 em,.sun{font-style:italic;background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.12rem;color:var(--muted);max-width:620px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:1em 1.8em;border-radius:999px;font-weight:700;font-size:.98rem;letter-spacing:.02em;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,background .35s,color .35s;white-space:nowrap;will-change:transform}
+.btn-sun{background:var(--sunset);color:#fff;box-shadow:0 18px 40px -16px rgba(255,61,127,.75)}
+.btn-sun:hover{box-shadow:0 24px 50px -16px rgba(255,61,127,.95)}
+.btn-sun:disabled{filter:grayscale(.9);opacity:.5;cursor:not-allowed;box-shadow:none}
+.btn-glass{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(10px)}
+.btn-glass:hover{background:#fff;color:var(--deep)}
+.btn-dark{background:var(--deep);color:#fff}
+.btn-dark:hover{background:var(--teal)}
+.btn-line{border:1.5px solid currentColor}
+.btn-line:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1.1s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+.clip{clip-path:inset(14% 10% 14% 10% round 30px);transition:clip-path 1.5s cubic-bezier(.2,.8,.2,1)}
+.clip.in{clip-path:inset(0 0 0 0 round var(--r))}
+.kb{animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.14) translate(-1.5%,-1%)}}
+
+/* cursor */
+.cur,.cur-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%)}
+.cur{width:7px;height:7px;background:var(--coral)}
+.cur-ring{width:38px;height:38px;border:1.5px solid rgba(255,106,61,.7);transition:width .3s,height .3s,background .3s,border-color .3s;display:grid;place-items:center;font-size:.7rem;font-weight:800;color:#fff;letter-spacing:.1em}
+.cur-ring.big{width:72px;height:72px;background:rgba(255,106,61,.9);border-color:transparent}
+.cur-ring.hov{width:58px;height:58px;background:rgba(255,106,61,.15)}
+@media (hover:none),(pointer:coarse){.cur,.cur-ring{display:none}}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:1000;background:var(--deeper);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .9s ease,visibility .9s}
+#loader.hide{opacity:0;visibility:hidden}
+#loader b{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,4.5rem);letter-spacing:.06em}
+#loader small{letter-spacing:.4em;font-size:.72rem;font-weight:800;opacity:.7}
+#loader .bar{width:180px;height:2px;background:rgba(255,255,255,.15);overflow:hidden;border-radius:2px}
+#loader .bar i{display:block;height:100%;width:0;background:var(--sunset);transition:width .3s}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:80;padding:22px 0;transition:padding .4s,background .4s,box-shadow .4s,color .4s;color:#fff}
+.nav.solid{background:rgba(247,241,232,.82);backdrop-filter:blur(16px) saturate(1.4);padding:12px 0;color:var(--ink);box-shadow:0 10px 30px -20px rgba(0,0,0,.35)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:var(--serif);font-weight:500;font-size:1.6rem;letter-spacing:.02em}
+.logo small{font-size:.58rem;letter-spacing:.42em;font-weight:800;opacity:.8;margin-top:4px}
+.links{display:flex;align-items:center;gap:28px;font-weight:600;font-size:.94rem}
+.links a:not(.btn){position:relative;opacity:.92}
+.links a:not(.btn)::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1.5px;background:currentColor;transition:right .35s}
+.links a:not(.btn):hover::after{right:0}
+.links .btn{padding:.7em 1.4em}
+.burger{display:none;width:46px;height:46px;border-radius:50%;position:relative;background:rgba(255,255,255,.16);backdrop-filter:blur(8px)}
+.burger span{position:absolute;left:13px;right:13px;height:2px;background:currentColor;transition:.35s}
+.burger span:nth-child(1){top:17px}.burger span:nth-child(2){top:23px}.burger span:nth-child(3){top:29px}
+.nav.open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav.open .burger span:nth-child(2){opacity:0}
+.nav.open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* INTRO (dron) */
+.intro{height:320vh;position:relative;background:#000}
+.intro-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:#fff}
+.intro video,.intro .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.intro .still{opacity:0;transition:opacity .25s linear}
+.intro .still.fb{opacity:1}
+.intro .shade{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 30%,rgba(0,0,0,0) 30%,rgba(0,0,0,.45) 100%),linear-gradient(180deg,rgba(3,20,25,.45),rgba(3,20,25,0) 35%,rgba(3,20,25,.35))}
+.layerA,.layerB{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 6%}
+.layerA small{letter-spacing:.5em;font-weight:800;font-size:.78rem;opacity:.9}
+.layerA h1{font-family:var(--serif);font-weight:400;font-size:clamp(4rem,15vw,13rem);line-height:.9;letter-spacing:.04em;margin:.12em 0;text-shadow:0 10px 60px rgba(0,0,0,.35)}
+.layerA h1 span{display:inline-block;opacity:0;transform:translateY(70px);animation:up 1.3s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.layerA p{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.4vw,1.7rem);opacity:0;animation:fade 1.2s 1.2s forwards}
+@keyframes fade{to{opacity:1}}
+.descend{position:absolute;bottom:42px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;font-size:.72rem;letter-spacing:.35em;font-weight:800;opacity:0;animation:fade 1s 1.8s forwards}
+.descend i{width:1.5px;height:56px;background:linear-gradient(#fff,transparent);position:relative;overflow:hidden}
+.descend i::after{content:"";position:absolute;left:0;right:0;top:-30px;height:30px;background:var(--mango);animation:drop 1.8s ease-in-out infinite}
+@keyframes drop{to{top:60px}}
+.layerB{opacity:0;pointer-events:none;justify-content:flex-end;padding-bottom:14vh}
+.layerB.show{opacity:1;pointer-events:auto}
+.layerB .eyebrow{color:#ffd9b0;margin-bottom:10px}
+.layerB h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,6rem);line-height:1;max-width:1000px;text-shadow:0 8px 40px rgba(0,0,0,.45)}
+.layerB h2 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.layerB h2 .w span{display:inline-block;transform:translateY(110%);transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.layerB.show h2 .w span{transform:none}
+.layerB p{max-width:600px;margin:18px auto 0;font-size:1.1rem;font-weight:500;text-shadow:0 2px 16px rgba(0,0,0,.5);opacity:0;transform:translateY(20px);transition:1s .5s}
+.layerB .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:26px;opacity:0;transform:translateY(20px);transition:1s .7s}
+.layerB.show p,.layerB.show .cta{opacity:1;transform:none}
+.alti{position:absolute;right:34px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:14px;font-size:.72rem;font-weight:800;letter-spacing:.2em}
+.alti .atrack{width:1.5px;height:220px;background:rgba(255,255,255,.3);position:relative}
+.alti .atrack i{position:absolute;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--mango);box-shadow:0 0 0 6px rgba(255,178,63,.25);top:0}
+.alti b{font-family:var(--serif);font-size:1.5rem;font-weight:400;letter-spacing:0;display:block}
+.iprog{position:absolute;left:0;bottom:0;height:3px;background:var(--sunset);width:0}
+
+/* marquee */
+.marquee{background:var(--deep);color:#fff;padding:22px 0;overflow:hidden;white-space:nowrap}
+.marquee .row{display:inline-flex;gap:46px;animation:marq 40s linear infinite;font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,2.2rem)}
+.marquee .row span{display:inline-flex;align-items:center;gap:46px}
+.marquee .row span::after{content:"✦";font-style:normal;font-size:.7em;color:var(--mango)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* concepto */
+.concept{padding:150px 0 110px}
+.statement{font-family:var(--serif);font-size:clamp(1.9rem,4.4vw,3.6rem);line-height:1.22;max-width:1100px}
+.statement span{opacity:.14;transition:opacity .25s}
+.statement span.on{opacity:1}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:90px;border-top:1px solid rgba(13,27,30,.12);padding-top:40px}
+.stat b{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,5vw,4rem);line-height:1;display:block}
+.stat span{color:var(--muted);font-weight:600;font-size:.95rem}
+
+/* cabañas (scroll horizontal) */
+.cabins{position:relative;background:var(--deeper);color:#fff}
+.cab-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding-top:64px}
+.cab-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:34px}
+.cab-head .h2{margin:.15em 0 0}
+.cab-count{font-family:var(--serif);font-size:1.3rem;opacity:.8;white-space:nowrap}
+.cab-count b{font-size:2.6rem;font-weight:400;color:var(--mango)}
+.track{display:flex;gap:30px;padding-left:4vw;will-change:transform}
+.panel{flex:none;width:min(76vw,1080px);height:min(64vh,620px);border-radius:var(--r);overflow:hidden;position:relative;box-shadow:0 40px 80px -40px #000}
+.panel .ph{position:absolute;inset:-4% -8%;}
+.panel .ph img{width:100%;height:100%;object-fit:cover}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,20,25,.85) 0%,rgba(3,20,25,.35) 45%,rgba(3,20,25,0) 70%);pointer-events:none}
+.pinfo{position:absolute;z-index:2;left:0;top:0;bottom:0;width:min(470px,90%);padding:40px 44px;display:flex;flex-direction:column;justify-content:flex-end}
+.tag{display:inline-flex;gap:8px;align-items:center;font-size:.72rem;letter-spacing:.24em;font-weight:800;text-transform:uppercase;color:var(--mango)}
+.pinfo h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;margin:10px 0 6px}
+.pinfo .meta{opacity:.8;font-weight:600;font-size:.92rem}
+.pinfo p{margin:14px 0;opacity:.92}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 20px}
+.chips span{font-size:.8rem;font-weight:700;padding:.4em .85em;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+.pfoot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.price small{display:block;font-size:.72rem;opacity:.75;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.price b{font-family:var(--serif);font-weight:400;font-size:2.2rem}
+.price b em{font-style:normal;font-family:var(--sans);font-size:.9rem;opacity:.7}
+.pfoot .btn{padding:.8em 1.3em;font-size:.9rem}
+.cab-bar{margin:34px 4vw 0;height:2px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
+.cab-bar i{display:block;height:100%;width:0;background:var(--sunset)}
+.cap-badge{position:absolute;z-index:2;top:22px;right:22px;background:rgba(255,255,255,.92);color:var(--ink);font-weight:800;font-size:.8rem;padding:.45em 1em;border-radius:999px}
+
+/* interiores */
+.interior{padding:140px 0}
+.int-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+.int-text{position:sticky;top:120px}
+.int-text ul{list-style:none;margin-top:28px;display:grid;gap:14px}
+.int-text li{display:flex;gap:14px;align-items:baseline;font-weight:600;border-bottom:1px solid rgba(13,27,30,.1);padding-bottom:14px}
+.int-text li b{font-family:var(--serif);font-weight:400;color:var(--coral);font-size:1.2rem;min-width:28px}
+.int-imgs{display:grid;gap:28px}
+.int-imgs figure{border-radius:var(--r);overflow:hidden;position:relative;box-shadow:var(--shadow)}
+.int-imgs figure img{width:100%;aspect-ratio:3/2;object-fit:cover;transform:scale(1.12);transition:transform .2s linear}
+.int-imgs figcaption{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);padding:.55em 1em;border-radius:999px;font-weight:700;font-size:.85rem}
+.int-imgs figure:nth-child(2){width:84%;margin-left:auto}
+
+/* ofertas */
+.offers{position:relative;padding:150px 0;color:#fff;overflow:hidden}
+.offers .bg{position:absolute;inset:-15% 0;background:url('media/muelle.jpg') center/cover;will-change:transform}
+.offers::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(3,28,33,.75),rgba(3,28,33,.55) 50%,rgba(3,28,33,.85))}
+.offers .wrap{position:relative;z-index:2}
+.offers .lead{color:rgba(255,255,255,.85)}
+.off-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:50px}
+.off{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(16px) saturate(1.3);border-radius:var(--r);padding:30px 26px;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.2,.8,.2,1),background .45s}
+.off:hover{transform:translateY(-10px);background:rgba(255,255,255,.17)}
+.off .pct{font-family:var(--serif);font-size:3.2rem;line-height:1;background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.off h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;margin:12px 0 8px}
+.off p{opacity:.88;font-size:.95rem;flex:1}
+.off small{display:block;opacity:.65;font-size:.8rem;margin:14px 0 18px;font-weight:600}
+.off .btn{width:100%;padding:.8em}
+
+/* isla */
+.island{padding:140px 0;background:var(--sand2)}
+.hot{position:relative;border-radius:var(--r);overflow:hidden;margin-top:50px;box-shadow:var(--shadow);aspect-ratio:3/2;width:100%}
+.hot img{width:100%;height:100%;object-fit:cover}
+.spot{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.spot button{width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:ping 2.2s infinite;display:block}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)}100%{box-shadow:0 0 0 22px rgba(255,255,255,0)}}
+.spot .tip{position:absolute;left:50%;bottom:34px;transform:translate(-50%,10px);width:230px;background:#fff;color:var(--ink);padding:14px 16px;border-radius:16px;box-shadow:0 20px 40px -14px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.35s;font-size:.88rem}
+.spot .tip b{font-family:var(--serif);font-weight:500;font-size:1.1rem;display:block;color:var(--coral)}
+.spot:hover .tip,.spot.open .tip{opacity:1;transform:translate(-50%,0)}
+.spot.right .tip{left:auto;right:-10px;transform:translate(0,10px)}
+.spot.right:hover .tip,.spot.right.open .tip{transform:none}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:90px;border-top:1px solid rgba(13,27,30,.14)}
+.act{padding:34px 30px 34px 0;border-bottom:1px solid rgba(13,27,30,.14);position:relative;transition:padding .4s}
+.act:not(:nth-child(3n)){border-right:1px solid rgba(13,27,30,.14)}
+.act:nth-child(3n+2),.act:nth-child(3n){padding-left:30px}
+.act .n{font-family:var(--serif);font-style:italic;color:var(--coral);font-size:1.1rem}
+.act h3{font-family:var(--serif);font-weight:400;font-size:1.65rem;margin:8px 0}
+.act p{color:var(--muted);font-size:.97rem}
+.act::before{content:"";position:absolute;inset:0;background:var(--sunset);opacity:0;transition:opacity .4s;z-index:-1}
+.act:hover h3{color:var(--coral)}
+.when{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;margin-top:80px}
+.panel2{background:#fff;border-radius:var(--r);padding:34px;box-shadow:var(--shadow)}
+.panel2 h3{font-family:var(--serif);font-weight:400;font-size:1.8rem;margin-bottom:10px}
+.panel2 p,.panel2 li{color:var(--muted)}
+.panel2 ul{list-style:none;display:grid;gap:12px;margin-top:10px}
+.panel2 li b{color:var(--ink)}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;margin:20px 0 14px;align-items:end;height:120px}
+.months div{border-radius:8px 8px 4px 4px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-size:.72rem;font-weight:800;color:#fff;transform-origin:bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.in .months div{transform:scaleY(1)}
+.m-alta{background:var(--sunset);height:100%}
+.m-media{background:linear-gradient(180deg,var(--turq),#0b8a95);height:72%}
+.m-baja{background:linear-gradient(180deg,#8e9be8,#5764b8);height:48%}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.84rem;font-weight:700;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+
+/* galería */
+.gallery-s{padding:140px 0}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:16px;margin-top:50px;grid-auto-flow:dense}
+.bento figure{border-radius:20px;overflow:hidden;position:relative;cursor:zoom-in}
+.bento figure.w{grid-column:span 2}.bento figure.t{grid-row:span 2}
+.bento img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.bento figure:hover img{transform:scale(1.08)}
+.bento figcaption{position:absolute;left:0;right:0;bottom:0;padding:50px 18px 16px;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent);color:#fff;font-family:var(--serif);font-size:1.15rem;transform:translateY(30%);opacity:0;transition:.5s}
+.bento figure:hover figcaption{transform:none;opacity:1}
+
+/* opiniones */
+.reviews{position:relative;padding:140px 0;color:#fff;overflow:hidden;background:var(--deep)}
+.reviews .bg{position:absolute;inset:0;background:url('media/portada.jpg') center/cover;filter:blur(30px) saturate(1.3);transform:scale(1.2);opacity:.45}
+.reviews .wrap{position:relative}
+.slider{overflow:hidden;margin-top:40px}
+.rtrack{display:flex;transition:transform .9s cubic-bezier(.65,.05,.25,1)}
+.rev{min-width:100%;text-align:center;padding:0 6%}
+.rev q{display:block;font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.5rem);line-height:1.3;quotes:"“" "”"}
+.rev .who{margin-top:26px;font-weight:700}
+.rev .who small{display:block;opacity:.7;font-weight:600}
+.stars{color:var(--mango);letter-spacing:4px;margin-bottom:18px}
+.dots{display:flex;justify-content:center;gap:10px;margin-top:34px}
+.dots button{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.35);transition:.4s}
+.dots button.on{width:34px;background:var(--mango)}
+.fict{text-align:center;opacity:.55;font-size:.78rem;margin-top:22px}
+
+/* reservas */
+.book{padding:140px 0;background:var(--sand)}
+.book-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;margin-top:50px;align-items:start}
+.card{background:#fff;border-radius:var(--r);padding:30px;box-shadow:0 20px 50px -30px rgba(3,28,33,.35)}
+.card + .card{margin-top:22px}
+.card h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:16px;display:flex;gap:12px;align-items:baseline}
+.card h3 i{font-style:italic;color:var(--coral);font-size:1rem}
+.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pick button{border-radius:18px;overflow:hidden;text-align:left;border:2px solid transparent;background:#f7f3ec;transition:.3s}
+.pick button img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s}
+.pick button:hover img{transform:scale(1.06)}
+.pick button div{padding:10px 12px}
+.pick b{font-family:var(--serif);font-weight:500;display:block;font-size:1.05rem}
+.pick small{color:var(--muted);font-weight:700;font-size:.75rem}
+.pick button.on{border-color:var(--coral);box-shadow:0 14px 30px -16px rgba(255,106,61,.8)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #efe8dc}
+.row:last-child{border-bottom:none}
+.row b{display:block;font-weight:700}
+.row small{color:var(--muted);font-weight:600}
+.step{display:flex;align-items:center;gap:6px;background:#f4eee4;border-radius:999px;padding:4px}
+.step button{width:34px;height:34px;border-radius:50%;background:#fff;font-weight:800;font-size:1.15rem;box-shadow:0 4px 10px -6px rgba(0,0,0,.4)}
+.step button:hover{background:var(--coral);color:#fff}
+.step button:disabled{opacity:.3;pointer-events:none}
+.step output{min-width:24px;text-align:center;font-weight:800}
+.sw{position:relative;width:50px;height:28px;flex:none}
+.sw input{opacity:0;width:0;height:0}
+.sw span{position:absolute;inset:0;border-radius:999px;background:#ddd5c8;cursor:pointer;transition:.3s}
+.sw span::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.3s;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.sw input:checked + span{background:var(--coral)}
+.sw input:checked + span::after{transform:translateX(22px)}
+.ochips{display:flex;flex-wrap:wrap;gap:8px}
+.ochips button{padding:.55em 1em;border-radius:999px;border:1.5px solid #e6dccb;font-weight:700;font-size:.86rem;transition:.25s;background:#fff}
+.ochips button:hover{border-color:var(--coral)}
+.ochips button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.calh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.calh b{font-family:var(--serif);font-weight:500;font-size:1.3rem}
+.calh button{width:40px;height:40px;border-radius:50%;background:#f4eee4;font-size:1.2rem;font-weight:700}
+.calh button:hover{background:var(--coral);color:#fff}
+.calh button:disabled{opacity:.3;pointer-events:none}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal .wd{text-align:center;font-size:.72rem;font-weight:800;color:var(--muted);padding:4px 0}
+.day{aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:.92rem;background:#f8f4ee;transition:background .15s,transform .15s}
+.day:not(.off):not(.occ):hover{transform:scale(1.07);background:#ffe9df}
+.day i{width:5px;height:5px;border-radius:50%;margin-top:2px}
+.s-alta i{background:var(--coral)}.s-media i{background:var(--turq)}.s-baja i{background:#7b88d8}
+.day.off{opacity:.28;background:transparent;cursor:default}
+.day.empty{background:transparent}
+.day.occ{background:repeating-linear-gradient(45deg,#f1e9dc,#f1e9dc 4px,#fff 4px,#fff 8px);color:#c5b7a3;text-decoration:line-through;cursor:not-allowed}
+.day.inr,.day.prev{background:#ffe2d4;border-radius:6px}
+.day.start,.day.end{background:var(--sunset);color:#fff}
+.day.start i,.day.end i{background:#fff}
+.cal-leg{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:.78rem;font-weight:700;color:var(--muted)}
+.cal-leg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.summary{position:sticky;top:90px;padding:0;overflow:hidden}
+.summary .sim{height:190px;position:relative;overflow:hidden}
+.summary .sim img{width:100%;height:100%;object-fit:cover}
+.summary .sim h4{position:absolute;left:22px;bottom:16px;color:#fff;font-family:var(--serif);font-weight:400;font-size:2rem;text-shadow:0 4px 20px rgba(0,0,0,.5)}
+.summary .sim::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 60%)}
+.summary .sim h4{z-index:2}
+.sbody{padding:22px 26px 26px}
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.dates div{background:#f8f4ee;border-radius:14px;padding:10px 12px}
+.dates small{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+.dates b{font-family:var(--serif);font-weight:500;font-size:1.05rem}
+.hint{background:#fff3e6;color:#8a5520;border-radius:14px;padding:10px 14px;font-weight:700;font-size:.88rem;margin-bottom:12px}
+.hint.warn{background:#ffe6e6;color:#a33}
+.lines{list-style:none;display:grid;gap:7px;margin-bottom:8px}
+.lines li{display:flex;justify-content:space-between;gap:10px;font-size:.92rem;color:var(--muted);font-weight:600}
+.lines li.disc{color:#13915a}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed #e3d8c6;padding-top:14px;margin:8px 0 18px}
+.total b{font-family:var(--serif);font-weight:500;font-size:2.4rem;transition:transform .3s}
+.total b.bump{transform:scale(1.08)}
+.summary .btn{width:100%}
+.note{text-align:center;font-size:.76rem;color:var(--muted);margin-top:10px;font-weight:600}
+
+/* ubicación */
+.where{padding:140px 0;background:var(--deeper);color:#fff}
+.where .lead{color:rgba(255,255,255,.75)}
+.where-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;margin-top:50px;align-items:stretch}
+.places{list-style:none;display:grid;gap:10px}
+.places button{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);transition:.3s}
+.places button:hover,.places button.on{background:rgba(255,255,255,.14);border-color:var(--mango)}
+.places b{font-family:var(--serif);font-weight:400;font-size:1.2rem;display:block}
+.places small{opacity:.65;font-weight:600}
+.places em{font-style:normal;font-weight:800;font-size:.8rem;color:var(--mango);white-space:nowrap}
+.mapbox{border-radius:var(--r);overflow:hidden;position:relative;min-height:520px;background:#0b5f74}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(1.15)}
+.mapbox svg{position:absolute;inset:0;width:100%;height:100%}
+.mapbox .open{position:absolute;right:16px;bottom:16px;z-index:3}
+.mpin{cursor:pointer}
+.mpin .ring{animation:ring 2s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ring{from{transform:scale(.5);opacity:.9}to{transform:scale(2.6);opacity:0}}
+.mpin text{font-family:var(--sans);font-weight:700;font-size:13px;paint-order:stroke;stroke:rgba(3,28,33,.8);stroke-width:4px;fill:#fff}
+.mpin.on circle.dot{fill:var(--mango)}
+
+/* contacto */
+.contact{padding:140px 0}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px}
+.form{display:grid;gap:14px}
+.f{display:grid;gap:6px}
+.f label{font-weight:700;font-size:.85rem}
+.f input,.f textarea,.f select{border:none;border-bottom:1.5px solid #d9cdb9;background:transparent;padding:.8em 0;outline:none;transition:border-color .3s;font-size:1rem}
+.f input:focus,.f textarea:focus,.f select:focus{border-color:var(--coral)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.info{display:grid;gap:22px;align-content:start}
+.info div{border-top:1px solid #e3d8c6;padding-top:18px}
+.info small{display:block;letter-spacing:.24em;font-weight:800;font-size:.7rem;color:var(--coral);text-transform:uppercase}
+.info b{font-family:var(--serif);font-weight:400;font-size:1.5rem}
+
+/* footer */
+footer{background:var(--deeper);color:rgba(255,255,255,.8);padding:90px 0 30px;overflow:hidden}
+.big{font-family:var(--serif);font-size:clamp(5rem,20vw,17rem);line-height:.85;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.35);white-space:nowrap;text-align:center;letter-spacing:.02em}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px;margin-top:60px}
+footer h4{color:#fff;font-family:var(--serif);font-weight:400;font-size:1.2rem;margin-bottom:10px}
+footer a{display:block;padding:3px 0;opacity:.8}
+footer a:hover{opacity:1;color:var(--mango)}
+.fsmall{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:50px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:.84rem;opacity:.7}
+
+/* modales */
+.modal{position:fixed;inset:0;z-index:300;background:rgba(2,16,20,.78);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.4s}
+.modal.open{opacity:1;visibility:visible}
+.box{background:var(--sand);border-radius:28px;width:100%;max-width:980px;max-height:92vh;overflow:auto;position:relative;transform:translateY(40px) scale(.97);transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.modal.open .box{transform:none}
+.x{position:absolute;top:14px;right:14px;z-index:5;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.9);font-size:1.5rem;transition:.3s}
+.x:hover{transform:rotate(90deg);background:var(--coral);color:#fff}
+.mslides{position:relative;height:430px;overflow:hidden;background:#000}
+.mslides>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s,transform 6s linear;transform:scale(1.05)}
+.mslides>img.on{opacity:1;transform:scale(1.12)}
+.mnav{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
+.mnav button{width:58px;height:40px;border-radius:10px;overflow:hidden;border:2px solid transparent;opacity:.7;transition:.3s}
+.mnav button.on{border-color:#fff;opacity:1}
+.mnav img{width:100%;height:100%;object-fit:cover}
+.mbody{padding:34px 38px 38px}
+.mbody h3{font-family:var(--serif);font-weight:400;font-size:2.6rem;line-height:1.05;margin:6px 0 10px}
+.mspecs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.mspecs div{background:#fff;border-radius:16px;padding:14px;text-align:center}
+.mspecs b{font-family:var(--serif);font-weight:400;font-size:1.6rem;display:block;color:var(--coral)}
+.mspecs small{font-weight:700;color:var(--muted)}
+.mcols{display:grid;grid-template-columns:1.2fr 1fr;gap:30px}
+.mcols ul{list-style:none;display:grid;gap:9px}
+.mcols li{font-weight:600;display:flex;gap:10px}
+.mcols li::before{content:"✦";color:var(--coral)}
+#lb .box{max-width:1200px;background:#000;overflow:hidden}
+#lb img{width:100%;max-height:80vh;object-fit:contain;background:#000}
+.lbcap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 22px;color:#fff}
+.lbcap b{font-family:var(--serif);font-weight:400;font-size:1.3rem}
+.lbcap div{display:flex;gap:8px}
+.lbcap button{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);font-size:1.2rem}
+.lbcap button:hover{background:var(--coral)}
+#conf .box{max-width:520px;text-align:center;padding:46px 36px}
+#conf h3{font-family:var(--serif);font-weight:400;font-size:2.3rem;margin:6px 0}
+#conf .code{display:inline-block;font-weight:800;letter-spacing:.2em;font-size:1.3rem;padding:.5em 1em;border-radius:14px;border:1.5px dashed var(--coral);margin:16px 0}
+#conf p{color:var(--muted)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:400}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,200px);background:var(--ink);color:#fff;padding:14px 22px;border-radius:16px;font-weight:700;z-index:500;transition:transform .5s cubic-bezier(.2,.9,.3,1.3);max-width:90vw}
+.toast.show{transform:translate(-50%,0)}
+.fab{position:fixed;right:20px;bottom:20px;z-index:70;transform:translateY(120px);transition:transform .5s cubic-bezier(.2,.9,.3,1.3)}
+.fab.show{transform:none}
+
+/* responsive */
+@media (max-width:1050px){
+  .off-grid{grid-template-columns:repeat(2,1fr)}
+  .int-grid,.when,.book-grid,.where-grid,.c-grid{grid-template-columns:1fr}
+  .int-text,.summary{position:static}
+  .acts{grid-template-columns:1fr 1fr}
+  .act,.act:nth-child(3n+2),.act:nth-child(3n){padding:28px 20px;border-right:none}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .mcols{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .burger{display:block}
+  .links{position:fixed;top:0;right:0;height:100vh;width:min(330px,84vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:24px;padding:40px;background:var(--deeper);color:#fff;transform:translateX(105%);transition:transform .5s cubic-bezier(.2,.8,.2,1);font-size:1.3rem}
+  .nav.open .links{transform:none}
+  .burger{z-index:2}
+  .nav.open{color:#fff}
+  /* cabañas: lista vertical en móvil */
+  .cabins{height:auto!important;padding:100px 0 60px}
+  .cab-stick{position:static;height:auto;overflow:visible}
+  .track{flex-direction:column;padding:0 4vw;transform:none!important;gap:22px}
+  .panel{width:100%;height:auto;min-height:560px}
+  .panel::after{background:linear-gradient(0deg,rgba(3,20,25,.92) 0%,rgba(3,20,25,.45) 55%,rgba(3,20,25,0) 80%)}
+  .pinfo{width:100%;padding:28px 24px}
+  .cab-bar,.cab-count{display:none}
+  .alti{display:none}
+}
+@media (max-width:640px){
+  .stats{grid-template-columns:1fr 1fr}
+  .acts{grid-template-columns:1fr}
+  .off-grid{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr;grid-auto-rows:240px}
+  .bento figure.w,.bento figure.t{grid-column:auto;grid-row:auto}
+  .bento figcaption{opacity:1;transform:none}
+  .pick{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .mslides{height:280px}
+  .mbody{padding:26px 22px}
+  .int-imgs figure:nth-child(2){width:100%}
+  .spot .tip{width:190px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="lock">
+
+<div id="loader"><b>Baan Nam</b><small>KOH TAO · TAILANDIA</small><div class="bar"><i id="lbar"></i></div></div>
+<div class="cur" id="cur"></div><div class="cur-ring" id="ring"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#inicio" class="logo"><b>Baan Nam</b><small>KOH TAO</small></a>
+    <nav class="links" id="links">
+      <a href="#cabanas">Cabañas</a>
+      <a href="#interior">Interior</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#isla">La isla</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#reservar" class="btn btn-sun">Reservar</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ========== INTRO: descenso en dron ========== -->
+<section class="intro" id="inicio">
+  <div class="intro-stick">
+    <video id="drone" muted playsinline preload="auto" poster="media/descenso-inicio.jpg" src="media/descenso.mp4"></video>
+    <img class="still" id="still" src="media/portada.jpg" alt="Cabañas de Baan Nam al atardecer">
+    <div class="shade"></div>
+    <div class="layerA" id="layerA">
+      <small>KOH TAO · GOLFO DE TAILANDIA</small>
+      <h1><span>Baan</span> <span style="animation-delay:.15s">Nam</span></h1>
+      <p>La casa del agua</p>
+    </div>
+    <div class="layerB" id="layerB">
+      <span class="eyebrow">Cuatro cabañas sobre el arrecife</span>
+      <h2 id="heroTitle">Duerme sobre el mar de Koh Tao</h2>
+      <p>Teca, hoja de palma y agua turquesa bajo tus pies. Una escalera desde tu terraza baja directa al coral.</p>
+      <div class="cta"><a href="#cabanas" class="btn btn-glass">Ver cabañas</a><a href="#reservar" class="btn btn-sun">Reservar ahora</a></div>
+    </div>
+    <div class="descend" id="descend">DESLIZA PARA DESCENDER<i></i></div>
+    <div class="alti" id="alti"><div><b id="altv">180</b>METROS</div><div class="atrack"><i id="altdot"></i></div></div>
+    <div class="iprog" id="iprog"></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="row" id="marq"></div></div>
+
+<!-- ========== CONCEPTO ========== -->
+<section class="concept" id="concepto">
+  <div class="wrap">
+    <span class="eyebrow reveal">Baan Nam · บ้านน้ำ</span>
+    <p class="statement" id="statement" style="margin-top:22px">Cuatro cabañas de teca y hoja de palma suspendidas sobre un arrecife de coral, en la costa más salvaje de Koh Tao. Sin prisas y sin ruido: solo el mar, la selva y las tortugas pasando bajo tu cama.</p>
+    <div class="stats">
+      <div class="stat reveal"><b data-count="4">0</b><span>cabañas sobre el agua</span></div>
+      <div class="stat reveal" style="--d:.1s"><b data-count="29" data-suf="°">0</b><span>temperatura media del mar</span></div>
+      <div class="stat reveal" style="--d:.2s"><b data-count="25" data-pre="+">0</b><span>puntos de inmersión cerca</span></div>
+      <div class="stat reveal" style="--d:.3s"><b data-count="50" data-suf=" m">0</b><span>hasta el arrecife</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CABAÑAS (scroll horizontal) ========== -->
+<section class="cabins" id="cabanas">
+  <div class="cab-stick">
+    <div class="wrap cab-head">
+      <div><span class="eyebrow">Las cabañas</span><h2 class="h2">Elige tu <em>casa del agua</em></h2></div>
+      <div class="cab-count"><b id="cabN">01</b> / 04</div>
+    </div>
+    <div class="track" id="track"></div>
+    <div class="cab-bar"><i id="cabBar"></i></div>
+  </div>
+</section>
+
+<!-- ========== INTERIOR ========== -->
+<section class="interior" id="interior">
+  <div class="wrap int-grid">
+    <div class="int-text reveal">
+      <span class="eyebrow">Dentro de tu cabaña</span>
+      <h2 class="h2">Despertar con el <em>mar bajo los pies</em></h2>
+      <p class="lead">Interiores de madera de teca recuperada, techos de hoja de palma y grandes puertas que se abren al agua. Todo pensado para que no quieras salir… salvo para bañarte.</p>
+      <ul>
+        <li><b>01</b>Suelo de cristal sobre el arrecife en Coral y Tortuga</li>
+        <li><b>02</b>Camas con dosel y mosquitera de lino</li>
+        <li><b>03</b>Baño exterior con bañera de piedra y ducha de lluvia</li>
+        <li><b>04</b>Salón y cocina abiertos a la terraza en las villas grandes</li>
+      </ul>
+    </div>
+    <div class="int-imgs">
+      <figure class="clip"><img src="media/interior-pequena.jpg" alt="Dormitorio con suelo de cristal sobre el arrecife" loading="lazy" data-par><figcaption>Dormitorio con suelo de cristal</figcaption></figure>
+      <figure class="clip"><img src="media/interior-grande.jpg" alt="Salón de una villa grande abierto al mar" loading="lazy" data-par><figcaption>Salón de las villas Manglar y Tortuga</figcaption></figure>
+      <figure class="clip"><img src="media/bano.jpg" alt="Baño exterior con bañera de piedra al atardecer" loading="lazy" data-par><figcaption>Baño exterior al atardecer</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OFERTAS ========== -->
+<section class="offers" id="ofertas">
+  <div class="bg" id="offBg"></div>
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow" style="color:var(--mango)">Ofertas</span>
+    <h2 class="h2">Escápate <em>con ventaja</em></h2>
+    <p class="lead">Elige una oferta y se aplica directamente en el simulador de reserva.</p></div>
+    <div class="off-grid" id="offGrid"></div>
+  </div>
+</section>
+
+<!-- ========== LA ISLA ========== -->
+<section class="island" id="isla">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow">La isla</span>
+    <h2 class="h2">Koh Tao, <em>la isla tortuga</em></h2>
+    <p class="lead">Unos 21 km² de selva, rocas de granito y calas en el golfo de Tailandia. Sin aeropuerto: aquí se llega en barco. Pasa el ratón (o toca) los puntos de la foto.</p></div>
+    <div class="hot clip" id="hot"><img src="media/aerea.jpg" alt="Vista aérea de Baan Nam y la costa de Koh Tao" loading="lazy"></div>
+    <div class="acts" id="acts"></div>
+    <div class="when">
+      <div class="panel2 reveal" id="whenPanel">
+        <h3>Cuándo venir</h3>
+        <p>El mar suele estar en calma casi todo el año. Las lluvias fuertes llegan de octubre a diciembre, y entonces los precios bajan.</p>
+        <div class="months" id="months"></div>
+        <div class="legend"><span><i class="m-alta"></i>Alta (+25 %)</span><span><i class="m-media"></i>Media</span><span><i class="m-baja"></i>Lluvias (−15 %)</span></div>
+      </div>
+      <div class="panel2 reveal" style="--d:.15s">
+        <h3>Cómo llegar</h3>
+        <ul>
+          <li><b>Avión</b> a Bangkok o directamente a Koh Samui.</li>
+          <li><b>Desde Bangkok:</b> tren nocturno o autobús a Chumphon y catamarán a Koh Tao (unas 2 h).</li>
+          <li><b>Desde Koh Samui:</b> ferry con parada en Koh Phangan (entre 1 h 30 y 2 h).</li>
+          <li><b>Último tramo:</b> te recogemos en el muelle de Mae Haad en barca de cola larga.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALERÍA ========== -->
+<section class="gallery-s" id="galeria">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow">Galería</span><h2 class="h2">Un día en <em>Baan Nam</em></h2></div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<!-- ========== OPINIONES ========== -->
+<section class="reviews" id="opiniones">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center"><span class="eyebrow" style="color:var(--mango)">Opiniones</span><h2 class="h2">Lo que cuentan <em>al volver</em></h2></div>
+    <div class="slider"><div class="rtrack" id="rtrack"></div></div>
+    <div class="dots" id="dots"></div>
+    <p class="fict">Web de demostración: opiniones ficticias.</p>
+  </div>
+</section>
+
+<!-- ========== RESERVAS ========== -->
+<section class="book" id="reservar">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow">Reservas</span><h2 class="h2">Reserva tus noches <em>sobre el agua</em></h2>
+    <p class="lead">Elige cabaña, fechas, oferta y extras: el precio se calcula al momento según la temporada.</p></div>
+    <div class="book-grid">
+      <div>
+        <div class="card reveal"><h3><i>01</i>Cabaña y huéspedes</h3>
+          <div class="pick" id="pick"></div>
+          <div class="row" style="margin-top:12px"><div><b>Huéspedes</b><small id="capNote"></small></div><div class="step"><button id="gM" aria-label="Menos">−</button><output id="gO">2</output><button id="gP" aria-label="Más">+</button></div></div>
+        </div>
+        <div class="card reveal"><h3><i>02</i>Fechas</h3>
+          <div class="calh"><button id="pM" aria-label="Mes anterior">‹</button><b id="calT"></b><button id="nM" aria-label="Mes siguiente">›</button></div>
+          <div class="cal" id="cal"></div>
+          <div class="cal-leg"><span><i style="background:var(--coral)"></i>Temporada alta</span><span><i style="background:var(--turq)"></i>Media</span><span><i style="background:#7b88d8"></i>Lluvias</span><span><i style="background:#ddd0bd"></i>Ocupado</span></div>
+        </div>
+        <div class="card reveal"><h3><i>03</i>Oferta</h3><div class="ochips" id="ochips"></div></div>
+        <div class="card reveal"><h3><i>04</i>Extras</h3>
+          <div class="row"><div><b>Desayuno tropical en la terraza</b><small>12 € por persona y noche</small></div><label class="sw"><input type="checkbox" id="xB"><span></span></label></div>
+          <div class="row"><div><b>Cena romántica sobre el agua</b><small>65 € · una noche, con velas</small></div><label class="sw"><input type="checkbox" id="xD"><span></span></label></div>
+          <div class="row"><div><b>Recogida en el muelle de Mae Haad</b><small>15 € · barca de cola larga</small></div><label class="sw"><input type="checkbox" id="xT" checked><span></span></label></div>
+          <div class="row"><div><b>Bautismo de buceo</b><small id="diveNote">75 € por persona</small></div><div class="step"><button id="dM" aria-label="Menos">−</button><output id="dO">0</output><button id="dP" aria-label="Más">+</button></div></div>
+        </div>
+      </div>
+      <aside class="card summary reveal" style="--d:.1s">
+        <div class="sim"><img id="sImg" src="media/cabana-coral-thumb.jpg" alt=""><h4 id="sName">Cabaña Coral</h4></div>
+        <div class="sbody">
+          <div class="dates"><div><small>Entrada</small><b id="sIn">—</b></div><div><small>Salida</small><b id="sOut">—</b></div></div>
+          <div class="hint" id="hint"></div>
+          <ul class="lines" id="lines"></ul>
+          <div class="total"><span style="font-weight:800">Total</span><b id="total">0 €</b></div>
+          <button class="btn btn-sun" id="bookBtn" disabled>Confirmar reserva</button>
+          <p class="note">Reserva simulada: es una web de demostración y no se cobra nada.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ========== UBICACIÓN ========== -->
+<section class="where" id="ubicacion">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow" style="color:var(--mango)">Ubicación</span><h2 class="h2">Dónde <em>estamos</em></h2>
+    <p class="lead">En la costa oeste de Koh Tao, a 10 minutos en barca del muelle principal. Pulsa un lugar para verlo en el mapa.</p></div>
+    <div class="where-grid">
+      <ul class="places" id="places"></ul>
+      <div class="mapbox reveal" id="mapbox"><a class="btn btn-sun open" id="gmaps" href="https://www.google.com/maps/place/Ko+Tao" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACTO ========== -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="reveal"><span class="eyebrow">Contacto</span><h2 class="h2">¿Hablamos? <em>Te esperamos</em></h2></div>
+    <div class="c-grid">
+      <form class="form reveal" id="cform">
+        <div class="two"><div class="f"><label for="cn">Nombre</label><input id="cn" required placeholder="Tu nombre"></div><div class="f"><label for="ce">Email</label><input id="ce" type="email" required placeholder="tu@email.com"></div></div>
+        <div class="f"><label for="ct">Asunto</label><select id="ct"><option>Información general</option><option>Luna de miel</option><option>Viaje en familia</option><option>Cursos de buceo</option></select></div>
+        <div class="f"><label for="cm">Mensaje</label><textarea id="cm" rows="4" required placeholder="Cuéntanos qué tienes en mente…"></textarea></div>
+        <div><button class="btn btn-dark" type="submit">Enviar mensaje</button></div>
+      </form>
+      <div class="info reveal" style="--d:.15s">
+        <div><small>Dirección</small><b>Costa oeste · Koh Tao, Surat Thani, Tailandia</b></div>
+        <div><small>Email</small><b>hola@baannam-kohtao.com</b></div>
+        <div><small>WhatsApp</small><b>+66 77 000 000</b></div>
+        <div><small>Check-in / Check-out</small><b>14:00 · 11:00</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="big">Baan Nam</div>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><h4>Baan Nam</h4><p>"Baan Nam" significa "casa del agua" en tailandés. Cuatro cabañas, un arrecife y muchas tortugas.</p></div>
+      <div><h4>Cabañas</h4><a href="#cabanas">Coral</a><a href="#cabanas">Luna</a><a href="#cabanas">Manglar</a><a href="#cabanas">Tortuga</a></div>
+      <div><h4>Explora</h4><a href="#interior">Interior</a><a href="#ofertas">Ofertas</a><a href="#isla">La isla</a><a href="#galeria">Galería</a></div>
+      <div><h4>Contacto</h4><a href="#reservar">Reservar</a><a href="#ubicacion">Ubicación</a><a href="#contacto">Escríbenos</a></div>
+    </div>
+    <div class="fsmall"><span>© <span id="yr"></span> Baan Nam · Web ficticia creada como proyecto de portfolio</span><span>Diseño y desarrollo: Sergio Pérez</span></div>
+  </div>
+</footer>
+
+<a href="#reservar" class="btn btn-sun fab" id="fab">Reservar</a>
+
+<div class="modal" id="cm1"><div class="box"><button class="x" data-close aria-label="Cerrar">×</button><div id="cmBody"></div></div></div>
+<div class="modal" id="lb"><div class="box"><button class="x" data-close aria-label="Cerrar">×</button><img id="lbImg" alt=""><div class="lbcap"><b id="lbT"></b><div><button id="lbP" aria-label="Anterior">‹</button><button id="lbN" aria-label="Siguiente">›</button></div></div></div></div>
+<div class="modal" id="conf"><div class="box"><button class="x" data-close aria-label="Cerrar">×</button>
+  <span class="eyebrow">Reserva confirmada</span><h3>¡Nos vemos en Koh Tao!</h3><p id="confT"></p><div class="code" id="confC"></div><p>Es una reserva simulada: no se ha hecho ningún cargo.</p>
+  <button class="btn btn-sun" data-close style="margin-top:18px">Genial</button></div></div>
+<canvas id="confetti"></canvas>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const EUR=new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+
+/* ===================== DATOS ===================== */
+const CABINS=[
+ {id:'coral',name:'Cabaña Coral',cap:2,size:32,price:120,tag:'Romántica',beds:'1 cama king con dosel',imgs:['cabana-coral','interior-pequena','bano'],
+  short:'La más íntima del muelle: hamaca colgada sobre el agua y escalera privada al arrecife.',
+  long:'Se despierta con el amanecer rosado del golfo. Tiene un panel de cristal en el suelo para ver pasar los peces desde la cama y una escalera de madera que baja directamente al agua turquesa. Perfecta para lunas de miel.',
+  feats:['Suelo de cristal','Hamaca sobre el agua','Escalera al mar','Ducha exterior','Aire acondicionado','Wi‑Fi']},
+ {id:'luna',name:'Cabaña Luna',cap:2,size:35,price:140,tag:'Vistas al atardecer',beds:'1 cama king con dosel',imgs:['cabana-luna','interior-pequena','bano'],
+  short:'La última del muelle, con bañera de piedra en la terraza y telescopio para las noches de estrellas.',
+  long:'La más apartada. Mira de frente al atardecer y, cuando cae la noche, el cielo de Koh Tao se llena de estrellas. Bañera de piedra en la terraza, telescopio de latón y cama con dosel.',
+  feats:['Bañera de piedra exterior','Telescopio','Vistas al oeste','Cama con dosel','Aire acondicionado','Minibar de fruta']},
+ {id:'manglar',name:'Villa Manglar',cap:4,size:58,price:190,tag:'Familias y amigos',beds:'2 dormitorios: king + 2 individuales',imgs:['cabana-manglar','interior-grande','bano'],
+  short:'Dos casitas unidas por un gran porche a la sombra, con cocina y kayak doble.',
+  long:'Pensada para familias o grupos de amigos: dos casitas gemelas unidas por un porche cubierto, una cocina pequeña para zumos y snacks y un kayak doble para explorar las calas cercanas.',
+  feats:['2 dormitorios','Kayak doble','Cocina pequeña','Porche cubierto','Aire acondicionado','Cuna bajo petición']},
+ {id:'tortuga',name:'Villa Tortuga',cap:4,size:64,price:220,tag:'La más grande',beds:'2 dormitorios + salón',imgs:['cabana-tortuga','interior-grande','bano'],
+  short:'Nuestra joya: red tensada sobre el agua, piscina privada y tortugas como vecinas.',
+  long:'Una red de catamarán sobre el agua para tumbarse a mirar el arrecife, piscina de inmersión privada, salón abierto a la terraza y cuatro equipos de snorkel. Las tortugas verdes suelen pasar por debajo a primera hora.',
+  feats:['Red sobre el agua','Piscina privada','4 equipos de snorkel','Salón y comedor','Aire acondicionado','Tortugas vecinas']}
+];
+const OFFERS=[
+ {id:'none',name:'Sin oferta'},
+ {id:'luna',name:'Luna de miel',pct:'−15 %',desc:'15 % menos en el alojamiento y la cena romántica sobre el agua incluida.',cond:'Coral o Luna · mínimo 3 noches'},
+ {id:'buceo',name:'Pack buceo',pct:'45 €',desc:'Bautismo de buceo a 45 € por persona en lugar de 75 €, con instructor y fotos.',cond:'Mínimo 4 noches y 1 buceador'},
+ {id:'larga',name:'Larga estancia',pct:'−10 %',desc:'10 % menos en todo el alojamiento para quedarte sin mirar el calendario.',cond:'Desde 7 noches'},
+ {id:'anticipada',name:'Reserva anticipada',pct:'−12 %',desc:'12 % menos si reservas con tiempo y llegas dentro de dos meses o más.',cond:'Entrada a 60 días o más'}
+];
+const ACTS=[
+ ['Buceo de fama mundial','Una de las islas donde más certificados de buceo se expiden. Chumphon Pinnacle, Sail Rock y Twins, a un paseo en barco.'],
+ ['Koh Nang Yuan','Tres islotes unidos por un banco de arena blanca. Sube al mirador para la foto más famosa del golfo.'],
+ ['Shark Bay','Snorkel con tiburones de punta negra, pequeños y tímidos, y tortugas verdes en aguas poco profundas.'],
+ ['Miradores en la selva','Senderos entre la jungla hasta John‑Suwan o Mango Viewpoint, con vistas a varias bahías.'],
+ ['Calas escondidas','Freedom Beach, Tanote Bay y Aow Leuk: agua cristalina, rocas de granito y muy poca gente.'],
+ ['Comida tailandesa','Pad thai, curry massaman, pescado a la brasa y mango sticky rice en los puestos de Mae Haad y Sairee.'],
+ ['Atardeceres en Sairee','Al caer el sol, los bares de la playa encienden espectáculos de fuego sobre la arena.'],
+ ['Yoga y masaje thai','Yoga al amanecer en el muelle y masaje tradicional en tu propia terraza.'],
+ ['Kayak y paddle surf','Incluidos en tu estancia: rema hasta las calas vecinas cuando el mar está como un espejo.']
+];
+const GALLERY=[['portada','El muelle al atardecer','w t'],['aerea','Baan Nam desde el aire','w'],['cabana-coral','Hamaca sobre el agua',''],['cabana-luna','Bañera bajo las estrellas',''],['interior-pequena','Suelo de cristal','t'],['muelle','El muelle iluminado','w'],['cabana-tortuga','Tortugas bajo la villa',''],['bano','Baño exterior',''],['cabana-manglar','Kayak a la puerta','w'],['interior-grande','Salón de la villa','']];
+const REVIEWS=[['Ver pasar peces por el suelo de cristal mientras desayunábamos fue mágico. La mejor luna de miel que podíamos imaginar.','Lucía y Marcos','Valencia · Cabaña Coral'],['Los niños no querían salir del agua. Kayak por la mañana, snorkel por la tarde y cenas en el porche. Volveremos seguro.','Familia Romero','Sevilla · Villa Manglar'],['El atardecer desde la bañera de la terraza es de otro planeta. Y por la noche, el telescopio y un cielo lleno de estrellas.','Jonas W.','Berlín · Cabaña Luna'],['Una tortuga pasó bajo la red a las 7 de la mañana. Hicimos el bautismo de buceo y ya estamos mirando cursos.','Andrea, Paula y Sofi','Madrid · Villa Tortuga']];
+const SEASON=['alta','alta','alta','alta','media','media','alta','alta','media','baja','baja','baja'];
+const MONTHS=['E','F','M','A','M','J','J','A','S','O','N','D'];
+const FACTOR={alta:1.25,media:1,baja:.85};
+const PLACES=[
+ {n:'Baan Nam',d:'Nuestras cabañas (ubicación ficticia)',t:'Aquí',q:'Ko Tao, Surat Thani',x:150,y:232,home:true},
+ {n:'Muelle de Mae Haad',d:'Llegada de los ferris',t:'10 min en barca',q:'Mae Haad Pier, Ko Tao',x:160,y:300},
+ {n:'Sairee Beach',d:'La playa más larga y animada',t:'15 min',q:'Sairee Beach, Ko Tao',x:178,y:160},
+ {n:'Koh Nang Yuan',d:'Tres islotes y un banco de arena',t:'20 min en barca',q:'Koh Nang Yuan',x:122,y:92},
+ {n:'Tanote Bay',d:'Cala salvaje con roca para saltar',t:'25 min',q:'Tanote Bay, Ko Tao',x:338,y:262},
+ {n:'Shark Bay',d:'Snorkel con tiburones de punta negra',t:'30 min',q:'Shark Bay, Ko Tao',x:318,y:412},
+ {n:'Mirador John‑Suwan',d:'Vistas a dos bahías a la vez',t:'30 min',q:'John-Suwan Viewpoint, Ko Tao',x:228,y:462}
+];
+
+/* ===================== LOADER ===================== */
+const drone=$('#drone');
+let loadP=0;const lbar=$('#lbar');
+const loadTick=setInterval(()=>{loadP=Math.min(loadP+Math.random()*12,90);lbar.style.width=loadP+'%';},180);
+function hideLoader(){clearInterval(loadTick);lbar.style.width='100%';setTimeout(()=>{$('#loader').classList.add('hide');document.body.classList.remove('lock');},350);}
+if(drone.readyState>=2)setTimeout(hideLoader,600);else drone.addEventListener('loadeddata',hideLoader,{once:true});
+setTimeout(hideLoader,4500);
+
+/* ===================== CURSOR ===================== */
+(function(){if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+ const c=$('#cur'),r=$('#ring');let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+ addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
+ (function f(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;r.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(f);})();
+ document.addEventListener('mouseover',e=>{const g=e.target.closest('.bento figure');const a=e.target.closest('a,button,.spot');
+   r.classList.toggle('big',!!g);r.textContent=g?'VER':'';r.classList.toggle('hov',!g&&!!a);});
+ // botones magnéticos
+ $$('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const k=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-k.left-k.width/2)*.18}px,${(e.clientY-k.top-k.height/2)*.25}px)`;});b.addEventListener('mouseleave',()=>b.style.transform='');});
+})();
+
+/* ===================== INTRO: dron con scroll ===================== */
+$('#descend').addEventListener('animationend',e=>{e.currentTarget.style.animation='none';});
+const intro=$('#inicio'),still=$('#still'),layerA=$('#layerA'),layerB=$('#layerB');
+(function(){const h=$('#heroTitle');h.innerHTML=h.textContent.split(' ').map((w,i)=>`<span class="w"><span style="transition-delay:${(i*.07).toFixed(2)}s">${w}</span></span>`).join(' ');})();
+let vidOK=true,vt=0,vtTarget=0;
+drone.addEventListener('error',()=>{vidOK=false;still.src='media/aerea.jpg';still.classList.add('fb');});
+// iOS: "despertar" el vídeo con el primer toque para que permita buscar fotogramas
+addEventListener('touchstart',()=>{drone.play().then(()=>drone.pause()).catch(()=>{});},{once:true,passive:true});
+function introProgress(){const r=intro.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight));}
+function updIntro(){
+  const p=introProgress();
+  layerA.style.opacity=1-clamp(p/.18);layerA.style.transform=`translateY(${-p*160}px) scale(${1+p*.3})`;
+  $('#descend').style.opacity=1-clamp(p/.08);
+  const alt=Math.round(180*(1-clamp(p/.85)));$('#altv').textContent=alt;$('#altdot').style.top=(clamp(p/.85)*210)+'px';
+  $('#iprog').style.width=(p*100)+'%';
+  if(vidOK){vtTarget=clamp(p/.82)*(drone.duration||5);
+    still.style.opacity=clamp((p-.8)/.1);
+  }else{ // sin vídeo: zoom de la foto aérea y fundido con la portada
+    still.style.transform=`scale(${1.5-clamp(p/.85)*.5})`;still.style.opacity=1;
+    still.src=p>.75?'media/portada.jpg':'media/aerea.jpg';
+  }
+  layerB.classList.toggle('show',p>.8);
+}
+(function loop(){ if(vidOK&&drone.readyState>=1){vt+=(vtTarget-vt)*.12;if(Math.abs(drone.currentTime-vt)>.015){try{drone.currentTime=vt;}catch(e){}}}requestAnimationFrame(loop);})();
+
+/* ===================== MARQUEE ===================== */
+(function(){const items=['Koh Tao','Golfo de Tailandia','Cuatro cabañas sobre el agua','Arrecife a 50 metros','Tortugas verdes','Atardeceres de fuego','Selva y granito'];
+ const s=items.map(t=>`<span>${t}</span>`).join('');$('#marq').innerHTML=s+s;})();
+
+/* ===================== STATEMENT palabra a palabra ===================== */
+const st=$('#statement');st.innerHTML=st.textContent.split(' ').map(w=>`<span>${w}</span>`).join(' ');
+const stWords=$$('#statement span');
+function updStatement(){const r=st.getBoundingClientRect();const p=clamp((innerHeight*.85-r.top)/(r.height+innerHeight*.35));const n=Math.round(p*stWords.length);stWords.forEach((w,i)=>w.classList.toggle('on',i<n));}
+
+/* ===================== CABAÑAS ===================== */
+$('#track').innerHTML=CABINS.map((c,i)=>`<article class="panel"><div class="ph"><img class="kb" src="media/${c.id==='coral'||c.id==='luna'?'cabana-'+c.id:'cabana-'+c.id}.jpg" alt="${c.name}" loading="lazy"></div><span class="cap-badge">${c.cap} personas · ${c.size} m²</span>
+ <div class="pinfo"><span class="tag">0${i+1} · ${c.tag}</span><h3>${c.name}</h3><div class="meta">${c.beds}</div><p>${c.short}</p>
+ <div class="chips">${c.feats.slice(0,4).map(f=>`<span>${f}</span>`).join('')}</div>
+ <div class="pfoot"><div class="price"><small>Desde</small><b>${c.price} € <em>/ noche</em></b></div><button class="btn btn-glass" data-detail="${i}">Detalles</button><button class="btn btn-sun" data-book="${i}">Reservar</button></div></div></article>`).join('');
+const cabSec=$('#cabanas'),track=$('#track');
+function sizeCabins(){ if(innerWidth<=900){cabSec.style.height='auto';return;} const dist=track.scrollWidth-innerWidth+innerWidth*.08; cabSec.style.height=(innerHeight+dist)+'px'; cabSec.dataset.dist=dist; }
+function updCabins(){ if(innerWidth<=900)return; const r=cabSec.getBoundingClientRect();const dist=+cabSec.dataset.dist||0;const p=clamp(-r.top/(r.height-innerHeight));
+ track.style.transform=`translateX(${-p*dist}px)`;$('#cabBar').style.width=(p*100)+'%';$('#cabN').textContent='0'+(Math.min(3,Math.floor(p*3.999))+1);
+ $$('.panel .ph').forEach((ph,i)=>{const k=p*3-i;ph.style.transform=`translateX(${k*-4}%)`;}); }
+
+/* ===================== OFERTAS ===================== */
+$('#offGrid').innerHTML=OFFERS.slice(1).map((o,i)=>`<div class="off reveal" style="--d:${i*.1}s"><div class="pct">${o.pct}</div><h3>${o.name}</h3><p>${o.desc}</p><small>${o.cond}</small><button class="btn btn-sun" data-offer="${o.id}">Aplicar oferta</button></div>`).join('');
+
+/* ===================== ISLA ===================== */
+const SPOTS=[[66,45,'Las cabañas','Cuatro casas sobre pilotes al final del muelle.'],[22,66,'Muelle iluminado','Farolillos encendidos cada noche desde la playa.'],[55,80,'Arrecife de coral','Snorkel a 50 m de tu escalera, con tortugas y peces payaso.'],[22,16,'Selva y granito','Senderos hacia los miradores de la isla.'],[13,84,'Playa privada','Arena blanca y palmeras justo a la entrada del muelle.'],[93,12,'Atardecer','Cada día el sol se pone frente a las terrazas.',1]];
+$('#hot').insertAdjacentHTML('beforeend',SPOTS.map(s=>`<div class="spot${s[4]||s[0]>80?' right':''}" style="left:${s[0]}%;top:${s[1]}%"><button aria-label="${s[2]}"></button><div class="tip"><b>${s[2]}</b>${s[3]}</div></div>`).join(''));
+$$('.spot').forEach(s=>s.addEventListener('click',e=>{e.stopPropagation();const o=s.classList.contains('open');$$('.spot').forEach(x=>x.classList.remove('open'));if(!o)s.classList.add('open');}));
+document.addEventListener('click',()=>$$('.spot.open').forEach(x=>x.classList.remove('open')));
+$('#acts').innerHTML=ACTS.map((a,i)=>`<div class="act reveal" style="--d:${(i%3)*.08}s"><span class="n">${String(i+1).padStart(2,'0')}</span><h3>${a[0]}</h3><p>${a[1]}</p></div>`).join('');
+$('#months').innerHTML=MONTHS.map((m,i)=>`<div class="m-${SEASON[i]}" style="transition-delay:${i*.05}s">${m}</div>`).join('');
+
+/* ===================== GALERÍA ===================== */
+$('#bento').innerHTML=GALLERY.map((g,i)=>`<figure class="${g[2].split(' ').filter(Boolean).join(' ')} reveal" style="--d:${(i%4)*.06}s" data-g="${i}"><img src="media/${g[0]}-thumb.jpg" data-full="media/${g[0]}.jpg" alt="${g[1]}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join('');
+// en la galería, las piezas grandes usan la foto completa
+$$('#bento figure.w img,#bento figure.t img').forEach(im=>im.src=im.dataset.full);
+
+/* ===================== OPINIONES ===================== */
+$('#rtrack').innerHTML=REVIEWS.map(r=>`<div class="rev"><div class="stars">★★★★★</div><q>${r[0]}</q><div class="who">${r[1]}<small>${r[2]}</small></div></div>`).join('');
+$('#dots').innerHTML=REVIEWS.map((_,i)=>`<button data-r="${i}" aria-label="Opinión ${i+1}"></button>`).join('');
+let rI=0,rT;function goR(i){rI=(i+REVIEWS.length)%REVIEWS.length;$('#rtrack').style.transform=`translateX(-${rI*100}%)`;$$('#dots button').forEach((d,j)=>d.classList.toggle('on',j===rI));clearInterval(rT);rT=setInterval(()=>goR(rI+1),6500);}
+$$('#dots button').forEach(d=>d.onclick=()=>goR(+d.dataset.r));goR(0);
+(function(){let x0=null;const s=$('.slider');s.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});s.addEventListener('touchend',e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)goR(rI+(dx<0?1:-1));x0=null;});})();
+
+/* ===================== MAPA ===================== */
+// En tu ordenador o en tu hosting se ve Google Maps real (satélite).
+// Dentro de la vista previa de Claude los mapas externos están bloqueados, así que se muestra un mapa ilustrado.
+const REAL_MAP=!/claude|anthropic/i.test(location.hostname+document.referrer);
+const mapbox=$('#mapbox');
+function gsrc(q,z){return `https://maps.google.com/maps?q=${encodeURIComponent(q)}&t=k&z=${z}&ie=UTF8&iwloc=&output=embed`;}
+if(REAL_MAP){mapbox.insertAdjacentHTML('afterbegin',`<iframe id="gframe" loading="lazy" title="Mapa de Koh Tao" src="${gsrc('Ko Tao, Surat Thani',13)}"></iframe>`);}
+else{
+  let s=`<svg viewBox="0 0 500 540" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="ms" cx=".5" cy=".5" r=".8"><stop offset="0" stop-color="#2fd3c8"/><stop offset=".5" stop-color="#0f8fa8"/><stop offset="1" stop-color="#06425a"/></radialGradient><linearGradient id="ml" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3c8f4f"/><stop offset="1" stop-color="#1d5e36"/></linearGradient></defs><rect width="500" height="540" fill="url(#ms)"/>`;
+  const isl='M240 70 C285 66 300 110 292 140 C318 150 345 190 330 220 C360 240 372 290 345 320 C362 360 350 410 320 430 C300 470 260 495 228 478 C200 494 168 470 176 440 C150 410 158 370 182 345 C150 320 140 280 160 255 C140 225 145 190 170 172 C160 140 180 100 205 92 C212 78 225 72 240 70Z';
+  s+=`<path d="${isl}" fill="none" stroke="#7ff0e6" stroke-opacity=".5" stroke-width="22"/><path d="${isl}" fill="none" stroke="#f3e2b8" stroke-width="7"/><path d="${isl}" fill="url(#ml)"/>`;
+  s+=`<path d="M200 150 C230 170 250 140 270 170 M190 270 C230 260 260 300 300 280 M210 380 C240 360 270 400 300 380" stroke="#16492b" stroke-width="12" stroke-linecap="round" fill="none" opacity=".5"/>`;
+  s+=`<path d="M108 92 C120 80 140 82 148 94 C140 104 120 104 108 92Z" fill="#3c8f4f" stroke="#f3e2b8" stroke-width="4"/><circle cx="100" cy="110" r="10" fill="#3c8f4f" stroke="#f3e2b8" stroke-width="4"/><path d="M108 100 L130 96" stroke="#f3e2b8" stroke-width="5" stroke-linecap="round"/>`;
+  s+=`<text x="30" y="46" font-family="Playfair Display,serif" font-style="italic" font-size="28" fill="#fff">Koh Tao</text><text x="32" y="66" font-family="Manrope" font-weight="800" font-size="10" letter-spacing="3" fill="#dffaf6">GOLFO DE TAILANDIA</text>`;
+  PLACES.forEach((p,i)=>{const c=p.home?'#ff3d7f':'#fff';s+=`<g class="mpin${p.home?' on':''}" data-p="${i}" transform="translate(${p.x} ${p.y})"><circle class="ring" r="8" fill="${c}"/><circle class="dot" r="${p.home?8:6}" fill="${c}" stroke="#062c33" stroke-width="2"/><text x="${p.x>300?-14:14}" y="5" text-anchor="${p.x>300?'end':'start'}">${p.n}</text></g>`;});
+  mapbox.insertAdjacentHTML('afterbegin',s+'</svg>');
+  $$('.mpin').forEach(g=>g.addEventListener('click',()=>selPlace(+g.dataset.p)));
+}
+$('#places').innerHTML=PLACES.map((p,i)=>`<li><button data-p="${i}" class="${i?'':'on'}"><span><b>${p.n}</b><small>${p.d}</small></span><em>${p.t}</em></button></li>`).join('');
+function selPlace(i){const p=PLACES[i];$$('#places button').forEach((b,j)=>b.classList.toggle('on',j===i));
+  $('#gmaps').href='https://www.google.com/maps/search/'+encodeURIComponent(p.q);
+  if(REAL_MAP){$('#gframe').src=gsrc(p.q,i?15:13);} else $$('.mpin').forEach((g,j)=>g.classList.toggle('on',j===i));}
+$$('#places button').forEach(b=>b.onclick=()=>selPlace(+b.dataset.p));
+
+/* ===================== MODALES ===================== */
+function openM(m){m.classList.add('open');document.body.classList.add('lock');}
+function closeM(m){m.classList.remove('open');if(!$$('.modal.open').length)document.body.classList.remove('lock');}
+$$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-close]'))closeM(m);}));
+let slideT;
+function showCabin(i){const c=CABINS[i];
+ $('#cmBody').innerHTML=`<div class="mslides">${c.imgs.map((s,k)=>`<img src="media/${s}.jpg" class="${k?'':'on'}" alt="${c.name}">`).join('')}<div class="mnav">${c.imgs.map((s,k)=>`<button class="${k?'':'on'}" data-s="${k}"><img src="media/${s}-thumb.jpg" alt=""></button>`).join('')}</div></div>
+ <div class="mbody"><span class="eyebrow">${c.tag}</span><h3>${c.name}</h3>
+ <div class="mspecs"><div><b>${c.cap}</b><small>personas</small></div><div><b>${c.size} m²</b><small>superficie</small></div><div><b>${c.price} €</b><small>desde / noche</small></div></div>
+ <div class="mcols"><div><p style="color:var(--muted);font-size:1.05rem">${c.long}</p><p style="margin-top:12px;font-weight:700">${c.beds}</p></div><ul>${c.feats.map(f=>`<li>${f}</li>`).join('')}</ul></div>
+ <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-sun" data-book="${i}">Reservar esta cabaña</button><button class="btn btn-line" data-close>Seguir mirando</button></div></div>`;
+ let k=0;const go=n=>{k=(n+c.imgs.length)%c.imgs.length;$$('.mslides>img').forEach((im,j)=>im.classList.toggle('on',j===k));$$('.mnav button').forEach((b,j)=>b.classList.toggle('on',j===k));};
+ $$('.mnav button').forEach(b=>b.onclick=()=>{go(+b.dataset.s);clearInterval(slideT);});
+ clearInterval(slideT);slideT=setInterval(()=>go(k+1),4000);
+ openM($('#cm1'));}
+let lbI=0;function showLb(i){lbI=(i+GALLERY.length)%GALLERY.length;const g=GALLERY[lbI];$('#lbImg').src=`media/${g[0]}.jpg`;$('#lbImg').alt=g[1];$('#lbT').textContent=g[1];openM($('#lb'));}
+$('#lbP').onclick=()=>showLb(lbI-1);$('#lbN').onclick=()=>showLb(lbI+1);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$$('.modal.open').forEach(closeM);if($('#lb').classList.contains('open')){if(e.key==='ArrowRight')showLb(lbI+1);if(e.key==='ArrowLeft')showLb(lbI-1);}});
+document.addEventListener('click',e=>{
+  const d=e.target.closest('[data-detail]');if(d)showCabin(+d.dataset.detail);
+  const b=e.target.closest('[data-book]');if(b){closeM($('#cm1'));selCabin(+b.dataset.book);$('#reservar').scrollIntoView({behavior:'smooth'});}
+  const g=e.target.closest('[data-g]');if(g)showLb(+g.dataset.g);
+  const o=e.target.closest('[data-offer]');if(o){selOffer(o.dataset.offer);$('#reservar').scrollIntoView({behavior:'smooth'});toast('Oferta "'+OFFERS.find(x=>x.id===o.dataset.offer).name+'" aplicada en la reserva');}
+});
+
+/* ===================== RESERVAS ===================== */
+const today=new Date();today.setHours(0,0,0,0);
+const key=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const addD=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+const parseK=k=>{const[a,b,c]=k.split('-').map(Number);return new Date(a,b-1,c);};
+const fmt=d=>d.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'});
+const OCC=CABINS.map((c,ci)=>{const r=rng(1000+ci*77),s=new Set();let i=1;while(i<420){if(r()<.17){const l=2+Math.floor(r()*5);for(let k=0;k<l;k++)s.add(key(addD(today,i+k)));i+=l+1;}else i++;}return s;});
+const B={cab:0,g:2,ci:null,co:null,view:new Date(today.getFullYear(),today.getMonth(),1),hover:null,div:0,offer:'none'};
+const maxView=new Date(today.getFullYear(),today.getMonth()+12,1);
+$('#pick').innerHTML=CABINS.map((c,i)=>`<button data-pick="${i}"><img src="media/cabana-${c.id}-thumb.jpg" alt="${c.name}"><div><b>${c.name.split(' ')[1]}</b><small>${c.cap} pers. · ${c.price} €</small></div></button>`).join('');
+$$('#pick button').forEach(b=>b.onclick=()=>selCabin(+b.dataset.pick));
+$('#ochips').innerHTML=OFFERS.map(o=>`<button data-o="${o.id}">${o.name}</button>`).join('');
+$$('#ochips button').forEach(b=>b.onclick=()=>selOffer(b.dataset.o));
+function selOffer(id){B.offer=id;$$('#ochips button').forEach(b=>b.classList.toggle('on',b.dataset.o===id));upd();}
+function selCabin(i){B.cab=i;const c=CABINS[i];$$('#pick button').forEach((b,j)=>b.classList.toggle('on',j===i));
+ B.g=Math.min(Math.max(B.g,1),c.cap);B.div=Math.min(B.div,B.g);
+ if(B.ci&&(OCC[i].has(key(B.ci))||(B.co&&!free(B.ci,B.co)))){B.ci=B.co=null;toast('Esas fechas no están libres en '+c.name);}
+ $('#sImg').src=`media/cabana-${c.id}-thumb.jpg`;$('#sName').textContent=c.name;$('#capNote').textContent=`Máximo ${c.cap} en esta cabaña`;drawCal();upd();}
+function free(a,b){for(let d=new Date(a);d<b;d=addD(d,1))if(OCC[B.cab].has(key(d)))return false;return true;}
+function drawCal(){const v=B.view,y=v.getFullYear(),m=v.getMonth();const t=v.toLocaleDateString('es-ES',{month:'long',year:'numeric'});$('#calT').textContent=t[0].toUpperCase()+t.slice(1);
+ $('#pM').disabled=y===today.getFullYear()&&m===today.getMonth();$('#nM').disabled=v>=maxView;
+ let h=['L','M','X','J','V','S','D'].map(d=>`<div class="wd">${d}</div>`).join('');const f=(new Date(y,m,1).getDay()+6)%7,n=new Date(y,m+1,0).getDate();
+ for(let i=0;i<f;i++)h+='<div class="day empty"></div>';
+ for(let d=1;d<=n;d++){const dt=new Date(y,m,d),k=key(dt);let c='day s-'+SEASON[m];if(dt<today)c+=' off';else if(OCC[B.cab].has(k))c+=' occ';h+=`<button class="${c}" data-k="${k}" ${dt<today?'disabled':''}>${d}<i></i></button>`;}
+ $('#cal').innerHTML=h;paint();}
+function paint(){const end=B.co||(B.ci&&B.hover&&B.hover>B.ci?B.hover:null);
+ $$('#cal .day[data-k]').forEach(el=>{const d=parseK(el.dataset.k);el.classList.remove('start','end','inr','prev');
+  if(B.ci&&+d===+B.ci)el.classList.add('start');if(B.co&&+d===+B.co)el.classList.add('end');
+  if(B.ci&&end&&d>B.ci&&d<end)el.classList.add(B.co?'inr':'prev');if(!B.co&&end&&+d===+end)el.classList.add('prev');});}
+$('#cal').addEventListener('click',e=>{const el=e.target.closest('.day[data-k]');if(!el||el.classList.contains('off'))return;const d=parseK(el.dataset.k);
+ if(el.classList.contains('occ')&&!(B.ci&&!B.co&&d>B.ci&&free(B.ci,d))){toast('Ese día ya está ocupado');return;}
+ if(!B.ci||B.co||d<=B.ci){B.ci=d;B.co=null;}else if(free(B.ci,d))B.co=d;else{toast('Hay noches ocupadas en ese rango');return;}
+ paint();upd();});
+$('#cal').addEventListener('mouseover',e=>{const el=e.target.closest('.day[data-k]');if(!el||B.co||!B.ci)return;B.hover=parseK(el.dataset.k);paint();});
+$('#cal').addEventListener('mouseleave',()=>{B.hover=null;paint();});
+$('#pM').onclick=()=>{B.view=new Date(B.view.getFullYear(),B.view.getMonth()-1,1);drawCal();};
+$('#nM').onclick=()=>{B.view=new Date(B.view.getFullYear(),B.view.getMonth()+1,1);drawCal();};
+$('#gM').onclick=()=>{B.g=Math.max(1,B.g-1);B.div=Math.min(B.div,B.g);upd();};
+$('#gP').onclick=()=>{B.g=Math.min(CABINS[B.cab].cap,B.g+1);upd();};
+$('#dM').onclick=()=>{B.div=Math.max(0,B.div-1);upd();};
+$('#dP').onclick=()=>{B.div=Math.min(B.g,B.div+1);upd();};
+['#xB','#xD','#xT'].forEach(s=>$(s).addEventListener('change',upd));
+function offerCheck(n){const c=CABINS[B.cab];
+ switch(B.offer){case 'luna':return c.cap===2&&n>=3?null:'Luna de miel: válida en Coral o Luna desde 3 noches';
+  case 'buceo':return n>=4&&B.div>=1?null:'Pack buceo: necesitas 4 noches y al menos 1 buceador';
+  case 'larga':return n>=7?null:'Larga estancia: desde 7 noches';
+  case 'anticipada':return B.ci&&(B.ci-today)/864e5>=60?null:'Reserva anticipada: la entrada debe ser dentro de 60 días o más';}
+ return null;}
+function calc(){const c=CABINS[B.cab],r={n:0,acc:0,lines:[],warn:null};if(!(B.ci&&B.co))return r;
+ const by={alta:0,media:0,baja:0};for(let d=new Date(B.ci);d<B.co;d=addD(d,1)){const s=SEASON[d.getMonth()];by[s]++;r.n++;r.acc+=Math.round(c.price*FACTOR[s]);}
+ Object.entries(by).filter(([,n])=>n).forEach(([s,n])=>r.lines.push([`${n} noche${n>1?'s':''} · temporada ${s}`,n*Math.round(c.price*FACTOR[s])]));
+ r.warn=B.offer!=='none'?offerCheck(r.n):null;const ok=B.offer!=='none'&&!r.warn;
+ if($('#xB').checked)r.lines.push([`Desayuno · ${B.g} × ${r.n} noches`,12*B.g*r.n]);
+ if($('#xD').checked||(ok&&B.offer==='luna'))r.lines.push(['Cena romántica sobre el agua',ok&&B.offer==='luna'?0:65]);
+ if($('#xT').checked)r.lines.push(['Recogida en el muelle',15]);
+ if(B.div)r.lines.push([`Bautismo de buceo × ${B.div}`,(ok&&B.offer==='buceo'?45:75)*B.div]);
+ let sub=r.lines.reduce((a,l)=>a+l[1],0);
+ const pct={luna:.15,larga:.10,anticipada:.12}[B.offer];
+ if(ok&&pct){const dsc=Math.round(r.acc*pct);r.lines.push([`Oferta ${OFFERS.find(o=>o.id===B.offer).name} (−${pct*100} %)`,-dsc,'disc']);sub-=dsc;}
+ if(ok&&B.offer==='buceo'&&B.div)r.lines.push(['Incluye descuento Pack buceo',0,'disc']);
+ const vat=Math.round(sub*.07);r.lines.push(['IVA tailandés (7 %)',vat]);r.total=sub+vat;return r;}
+let last=0;
+function upd(){const c=CABINS[B.cab];$('#gO').textContent=B.g;$('#dO').textContent=B.div;
+ $('#gM').disabled=B.g<=1;$('#gP').disabled=B.g>=c.cap;$('#dM').disabled=B.div<=0;$('#dP').disabled=B.div>=B.g;
+ $('#diveNote').textContent=B.offer==='buceo'?'45 € por persona con Pack buceo':'75 € por persona';
+ $('#sIn').textContent=B.ci?fmt(B.ci):'—';$('#sOut').textContent=B.co?fmt(B.co):'—';
+ const r=calc(),h=$('#hint');h.classList.remove('warn');h.style.display='';
+ if(!B.ci)h.textContent='Elige en el calendario el día de entrada';
+ else if(!B.co)h.textContent='Ahora elige el día de salida';
+ else if(r.warn){h.textContent='Oferta no aplicada · '+r.warn;h.classList.add('warn');}
+ else if(B.offer==='none'&&r.n>=7)h.textContent='Con 7 noches o más puedes aplicar la oferta Larga estancia';
+ else h.style.display='none';
+ $('#lines').innerHTML=r.lines.map(l=>`<li class="${l[2]||''}"><span>${l[0]}</span><span>${l[1]<0?'−'+EUR.format(-l[1]):l[1]===0?'Incluido':EUR.format(l[1])}</span></li>`).join('');
+ const t=r.total||0;anim($('#total'),last,t);last=t;
+ $('#bookBtn').disabled=!r.n;$('#bookBtn').textContent=r.n?`Confirmar ${r.n} noche${r.n>1?'s':''} · ${EUR.format(t)}`:'Confirmar reserva';}
+function anim(el,a,b){const t0=performance.now();el.classList.add('bump');setTimeout(()=>el.classList.remove('bump'),250);(function f(t){const k=Math.min(1,(t-t0)/500),e=1-Math.pow(1-k,3);el.textContent=EUR.format(Math.round(a+(b-a)*e));if(k<1)requestAnimationFrame(f);})(t0);}
+$('#bookBtn').onclick=()=>{const r=calc(),c=CABINS[B.cab];$('#confT').innerHTML=`<b>${c.name}</b> · ${B.g} huésped${B.g>1?'es':''}<br>${fmt(B.ci)} → ${fmt(B.co)} (${r.n} noches) · <b>${EUR.format(r.total)}</b>`;$('#confC').textContent='BN-'+Math.random().toString(36).slice(2,7).toUpperCase();openM($('#conf'));confetti();};
+selOffer('none');selCabin(0);
+
+/* ===================== EXTRAS ===================== */
+function confetti(){const cv=$('#confetti'),x=cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;const cols=['#ff3d7f','#ff6a3d','#ffb23f','#19d3c5','#fff'];
+ const P=Array.from({length:170},()=>({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*16,vy:-Math.random()*16-4,s:4+Math.random()*6,c:cols[Math.random()*5|0],r:Math.random()*6,vr:(Math.random()-.5)*.3}));const t0=performance.now();
+ (function f(t){x.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore();});if(t-t0<3500)requestAnimationFrame(f);else x.clearRect(0,0,cv.width,cv.height);})(t0);}
+let tT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),3200);}
+$('#cform').addEventListener('submit',e=>{e.preventDefault();toast('Mensaje recibido (demo). ¡Gracias!');e.target.reset();});
+$('#burger').onclick=()=>$('#nav').classList.toggle('open');
+$$('#links a').forEach(a=>a.addEventListener('click',()=>$('#nav').classList.remove('open')));
+$('#yr').textContent=new Date().getFullYear();
+
+/* ===================== SCROLL GENERAL ===================== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+$$('.reveal,.clip').forEach(el=>io.observe(el));
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,to=+el.dataset.count,t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1700),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=(el.dataset.pre||'')+v+(el.dataset.suf||'');if(k<1)requestAnimationFrame(f);})(t0);}),{threshold:.6});
+$$('[data-count]').forEach(el=>cio.observe(el));
+const parImgs=$$('[data-par]'),offBg=$('#offBg');
+function onScroll(){const y=scrollY;
+ $('#nav').classList.toggle('solid',y>intro.offsetHeight-80);
+ $('#fab').classList.toggle('show',y>intro.offsetHeight&&y<$('#reservar').offsetTop-innerHeight*.5);
+ updIntro();updStatement();updCabins();
+ parImgs.forEach(im=>{const r=im.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const k=(r.top+r.height/2-innerHeight/2)/innerHeight;im.style.transform=`scale(1.12) translateY(${k*-6}%)`;});
+ const ro=offBg.parentElement.getBoundingClientRect();if(ro.bottom>0&&ro.top<innerHeight)offBg.style.transform=`translateY(${(ro.top/innerHeight)*-12}%)`;
+}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',()=>{sizeCabins();onScroll();});
+addEventListener('load',()=>{sizeCabins();onScroll();});
+sizeCabins();onScroll();
+</script>
+</body>
+</html>
