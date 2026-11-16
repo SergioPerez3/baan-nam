@@ -38,4 +38,4 @@ Web ficticia de un alquiler de cabañas sobre el agua en Koh Tao (Tailandia), cr
 
 ---
 
-Proyecto ficticio de portfolio · Diseño y desarrollo: **Sergio Pérez**
+Proyecto ficticio · Diseño y desarrollo: **Sergio Pérez**
